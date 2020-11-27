@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:firebase_chat/Login/login.dart';
 import 'package:firebase_chat/main.dart';
 
-
 class InitialPage extends StatefulWidget {
   InitialPage({Key key, this.title}) : super(key: key);
 
