@@ -27,7 +27,8 @@ String Photo;
 String senderName;
 String senderUid;
 String senderEmail;
-  ChatScreen({Key key,this.Code,this.Name,this.Photo,this.senderName,this.senderUid,this.senderEmail}) : super(key: key);
+String token;
+  ChatScreen({Key key,this.Code,this.Name,this.Photo,this.senderName,this.senderUid,this.senderEmail,this.token}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
@@ -117,7 +118,8 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin,W
   }
 
   sendNotification({String token,String body,String name}) async {
-    await http.post(
+    print(body);
+   var response =  await http.post(
       'https://fcm.googleapis.com/fcm/send',
       headers: <String, String>{
         'Content-Type': 'application/json',
@@ -126,8 +128,8 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin,W
       body: jsonEncode(
         <String, dynamic>{
           'notification': <String, dynamic>{
-            'body': 'this is a body',
-            'title': 'this is a title'
+            'body': '$body',
+            'title': '$name'
           },
           'priority': 'high',
           'data': <String, dynamic>{
@@ -139,6 +141,7 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin,W
         },
       ),
     );
+   print(response.body);
   }
   _scrollListener() {
     if (listScrollController.offset >=
@@ -353,6 +356,7 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin,W
             GestureDetector(
               onTap:  () async {
                 // _publishMessage(_messageTextController.text);
+                sendNotification(body: _messageTextController.text,name: widget.senderName,token: widget.token);
                 onSendMessage(_messageTextController.text,0);
               },
               child:

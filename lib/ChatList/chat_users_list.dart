@@ -184,10 +184,11 @@ class _ChatUserListState extends State<ChatUserList> with TickerProviderStateMix
             borderRadius: BorderRadius.circular(15.0)),
         tileColor: Colors.white10,
         onTap: () {
+          print(data['messageToken'],);
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) =>
-                ChatScreen(Code: data['uid'],Name: data['name'],Photo: data['photoUrl'],senderName:  name,senderUid: uid,senderEmail: data['email'],),),
+                ChatScreen(Code: data['uid'],Name: data['name'],Photo: data['photoUrl'],senderName:  name,senderUid: uid,senderEmail: data['email'],token: data['messageToken'],),),
           );
         },
         title: Container(
