@@ -5,13 +5,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_chat/ChatView/ChatScreen.dart';
 import 'package:firebase_chat/Profile/profile.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:intl/intl.dart';
 import 'package:firebase_chat/Login/login.dart';
-
+import 'package:http/http.dart' as http;
 
 
 class ChatUserList extends StatefulWidget {
@@ -35,15 +36,38 @@ class _ChatUserListState extends State<ChatUserList> with TickerProviderStateMix
   String email ='';
   String name = '';
   AppLifecycleState _lastLifecycleState;
+    final String serverToken = 'AAAAmvvAjYM:APA91bGxXqMtBGZ85MqgmLg7XNG95okpMxOdq9o__E49t4i3W834JvlSIPBeJjJ-e-rg1__84GHn8UAzfmrrZ8aWkvzUKcvZNvyikyOtgPV5SUcyin1OypGfRfiBnyP1N5sW0oz3W3RG';
+    final FirebaseMessaging firebaseMessaging = FirebaseMessaging();
   @override
   void initState() {
     WidgetsBinding.instance.addObserver(this);
     getdata();
+    sendAndRetrieveMessage();
     // Timer.periodic(Duration(seconds: 1),  (s) {
     //   print("aaaaaaa $_lastLifecycleState.");
     // });
     super.initState();
   }
+
+
+
+    Future<Map<String, dynamic>> sendAndRetrieveMessage() async {
+      await firebaseMessaging.requestNotificationPermissions(
+        const IosNotificationSettings(sound: true, badge: true, alert: true, provisional: false),
+      );
+
+      final Completer<Map<String, dynamic>> completer =
+      Completer<Map<String, dynamic>>();
+
+      firebaseMessaging.configure(
+        onMessage: (Map<String, dynamic> message) async {
+          completer.complete(message);
+          print('message $message');
+        },
+      );
+
+      return completer.future;
+    }
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     setState(() {

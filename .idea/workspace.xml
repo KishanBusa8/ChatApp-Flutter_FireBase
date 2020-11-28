@@ -17,8 +17,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6afb7ba1-2f7a-4f47-84e6-3dd412140094" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/lib/FireBaseGlobals.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/intial.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/intial.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.packages" beforeDir="false" afterPath="$PROJECT_DIR$/.packages" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ChatList/chat_users_list.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ChatList/chat_users_list.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ChatView/ChatScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ChatView/ChatScreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/authservice.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/authservice.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,9 +50,15 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="io.flutter.reload.alreadyRun" value="true" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/flutter_voice_changer-master/example" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
     <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lib" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter">
@@ -65,7 +84,21 @@
       <option name="project" value="LOCAL" />
       <updated>1606454945864</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="add initial commit (add project)">
+      <created>1606456076669</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1606456076669</updated>
+    </task>
+    <task id="LOCAL-00003" summary="add initial commit (add project)">
+      <created>1606457429906</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1606457429906</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -100,22 +133,42 @@
     <option name="LAST_COMMIT_MESSAGE" value="add initial commit (add project)" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="208" y="27" width="999" height="741" key="CommitChangelistDialog2" timestamp="1606454945732">
+    <state x="160" y="127" width="1106" height="541" key="AVDManager" timestamp="1606567265580">
       <screen x="60" y="27" width="1306" height="741" />
     </state>
-    <state x="208" y="27" width="999" height="741" key="CommitChangelistDialog2/60.27.1306.741@60.27.1306.741" timestamp="1606454945732" />
-    <state x="496" y="155" width="424" height="491" key="FileChooserDialogImpl" timestamp="1606455381994">
+    <state x="160" y="127" width="1106" height="541" key="AVDManager/60.27.1306.741@60.27.1306.741" timestamp="1606567265580" />
+    <state x="208" y="27" width="999" height="741" key="CommitChangelistDialog2" timestamp="1606457429851">
       <screen x="60" y="27" width="1306" height="741" />
     </state>
-    <state x="496" y="155" width="424" height="491" key="FileChooserDialogImpl/60.27.1306.741@60.27.1306.741" timestamp="1606455381994" />
+    <state x="208" y="27" width="999" height="741" key="CommitChangelistDialog2/60.27.1306.741@60.27.1306.741" timestamp="1606457429851" />
+    <state x="496" y="155" width="424" height="491" key="FileChooserDialogImpl" timestamp="1606567495354">
+      <screen x="60" y="27" width="1306" height="741" />
+    </state>
+    <state x="496" y="155" width="424" height="491" key="FileChooserDialogImpl/60.27.1306.741@60.27.1306.741" timestamp="1606567495354" />
+    <state width="1260" height="339" key="GridCell.Tab.0.bottom" timestamp="1606567654027">
+      <screen x="60" y="27" width="1306" height="741" />
+    </state>
+    <state width="1260" height="339" key="GridCell.Tab.0.bottom/60.27.1306.741@60.27.1306.741" timestamp="1606567654027" />
+    <state width="1260" height="339" key="GridCell.Tab.0.center" timestamp="1606567654026">
+      <screen x="60" y="27" width="1306" height="741" />
+    </state>
+    <state width="1260" height="339" key="GridCell.Tab.0.center/60.27.1306.741@60.27.1306.741" timestamp="1606567654026" />
+    <state width="1260" height="339" key="GridCell.Tab.0.left" timestamp="1606567654025">
+      <screen x="60" y="27" width="1306" height="741" />
+    </state>
+    <state width="1260" height="339" key="GridCell.Tab.0.left/60.27.1306.741@60.27.1306.741" timestamp="1606567654025" />
+    <state width="1260" height="339" key="GridCell.Tab.0.right" timestamp="1606567654026">
+      <screen x="60" y="27" width="1306" height="741" />
+    </state>
+    <state width="1260" height="339" key="GridCell.Tab.0.right/60.27.1306.741@60.27.1306.741" timestamp="1606567654026" />
     <state x="60" y="27" width="685" height="741" key="VCS.ChangeListViewerDialog" timestamp="1606455350425">
       <screen x="60" y="27" width="1306" height="741" />
     </state>
     <state x="60" y="27" width="685" height="741" key="VCS.ChangeListViewerDialog/60.27.1306.741@60.27.1306.741" timestamp="1606455350425" />
-    <state x="308" y="129" width="800" height="543" key="Vcs.Push.Dialog.v2" timestamp="1606454957025">
+    <state x="308" y="129" width="800" height="543" key="Vcs.Push.Dialog.v2" timestamp="1606457436083">
       <screen x="60" y="27" width="1306" height="741" />
     </state>
-    <state x="308" y="129" width="800" height="543" key="Vcs.Push.Dialog.v2/60.27.1306.741@60.27.1306.741" timestamp="1606454957025" />
+    <state x="308" y="129" width="800" height="543" key="Vcs.Push.Dialog.v2/60.27.1306.741@60.27.1306.741" timestamp="1606457436083" />
     <state x="332" y="173" width="761" height="463" key="git4idea.merge.GitPullDialog" timestamp="1606455305983">
       <screen x="60" y="27" width="1306" height="741" />
     </state>

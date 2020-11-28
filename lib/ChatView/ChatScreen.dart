@@ -16,6 +16,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:firebase_chat/Login/login.dart';
+import 'package:http/http.dart' as http;
 
 
 
@@ -53,6 +54,8 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin,W
   final int _limitIncrement = 20;
   final ScrollController listScrollController = ScrollController();
   final FocusNode focusNode = FocusNode();
+  final String serverToken = 'AAAAmvvAjYM:APA91bGxXqMtBGZ85MqgmLg7XNG95okpMxOdq9o__E49t4i3W834JvlSIPBeJjJ-e-rg1__84GHn8UAzfmrrZ8aWkvzUKcvZNvyikyOtgPV5SUcyin1OypGfRfiBnyP1N5sW0oz3W3RG';
+
   @override
   void initState() {
     WidgetsBinding.instance.addObserver(this);
@@ -111,6 +114,31 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin,W
         .update({'chattingWith': peerId});
 
     setState(() {});
+  }
+
+  sendNotification({String token,String body,String name}) async {
+    await http.post(
+      'https://fcm.googleapis.com/fcm/send',
+      headers: <String, String>{
+        'Content-Type': 'application/json',
+        'Authorization': 'key=$serverToken',
+      },
+      body: jsonEncode(
+        <String, dynamic>{
+          'notification': <String, dynamic>{
+            'body': 'this is a body',
+            'title': 'this is a title'
+          },
+          'priority': 'high',
+          'data': <String, dynamic>{
+            'click_action': 'FLUTTER_NOTIFICATION_CLICK',
+            'id': '1',
+            'status': 'done'
+          },
+          'to': '$token',
+        },
+      ),
+    );
   }
   _scrollListener() {
     if (listScrollController.offset >=

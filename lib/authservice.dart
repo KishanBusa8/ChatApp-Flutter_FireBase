@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -9,6 +10,7 @@ import 'package:http/http.dart' as http;
 
 class AuthService  {
     final secureStorage = new FlutterSecureStorage();
+    final FirebaseMessaging firebaseMessaging = FirebaseMessaging();
   GoogleSignIn _googleSignIn = GoogleSignIn(
     scopes: [
       'email',
@@ -27,6 +29,7 @@ class AuthService  {
     }
   }
   Future <User> googleSignin(BuildContext context) async {
+    var token = await firebaseMessaging.getToken();
     User currentUser;
     try {
       final GoogleSignInAccount googleUser = await _googleSignIn.signIn();
@@ -52,19 +55,22 @@ class AuthService  {
       if (documents.length == 0) {
         // Update data to server if new user
         FirebaseFirestore.instance.collection('users').doc(currentUser.uid).set(
-            { 'name': currentUser.displayName, 'photoUrl': currentUser.photoURL, 'uid': currentUser.uid,'email' :currentUser.email,'PhoneNumber' : currentUser.phoneNumber,'Status' : 'Hey There!','AboutMe' : 'Developer','onlineStatus' : 'Online' });
+            { 'name': currentUser.displayName, 'photoUrl': currentUser.photoURL, 'uid': currentUser.uid,'email' :currentUser.email,'PhoneNumber' : currentUser.phoneNumber,'Status' : 'Hey There!','AboutMe' : 'Developer','onlineStatus' : 'Online','messageToken' : '$token' });
         await secureStorage.write(key: "id", value: currentUser.uid.toString());
         await secureStorage.write(key: "name", value: currentUser.displayName.toString());
         await secureStorage.write(key: "photoUrl", value: currentUser.photoURL.toString());
         await secureStorage.write(key: "email", value: currentUser.email.toString());
+        await secureStorage.write(key: "messageToken", value: token.toString());
       } else {
         print("User Name : ${documents.length}");
         FirebaseFirestore.instance.collection('users').doc(currentUser.uid).update(
-            { 'name': documents[0].data()['name'], 'photoUrl': documents[0].data()['photoUrl'], 'uid': currentUser.uid,'email' :currentUser.email,'PhoneNumber' : documents[0].data()['PhoneNumber'],'Status' : documents[0].data()['Status'],'AboutMe' : documents[0].data()['AboutMe'], });
+            { 'name': documents[0].data()['name'], 'photoUrl': documents[0].data()['photoUrl'], 'uid': currentUser.uid,'email' :currentUser.email,'PhoneNumber' : documents[0].data()['PhoneNumber'],'Status' : documents[0].data()['Status'],'AboutMe' : documents[0].data()['AboutMe'],'messageToken' : '$token' });
         await secureStorage.write(key: "id", value: documents[0].data()['uid']);
         await secureStorage.write(key: "name", value: documents[0].data()['name']);
         await secureStorage.write(key: "photoUrl", value: documents[0].data()['photoUrl']);
         await secureStorage.write(key: "email", value: documents[0].data()['email']);
+        await secureStorage.write(key: "messageToken", value: documents[0].data()['messageToken']);
+
       }
       // var newkey = rootRef.child("Users").push().key;
       // rootRef.child("Users").orderByChild("uid").equalTo("${currentUser.uid}").once().then((DataSnapshot snapshot) {
