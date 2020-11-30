@@ -42,6 +42,35 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:665648663939:android:13f69453f91181b5d6bab6",
+        "android_client_info": {
+          "package_name": "com.app.firebasechat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "665648663939-30v8gr76mo5diaspukbja290gdsscf1o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8-5R6Yy0ML0pWGvt4XjvsoIgN5eDx4-4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "665648663939-30v8gr76mo5diaspukbja290gdsscf1o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"

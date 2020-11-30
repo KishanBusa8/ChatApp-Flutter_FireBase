@@ -50,7 +50,7 @@ class Login extends StatelessWidget {
                   Container(
                     alignment: Alignment.center,
                     padding: EdgeInsets.only(bottom: 50),
-                    child: Text("ChatDemo",style: TextStyle(color: Colors.white,fontSize: 30,fontWeight: FontWeight.bold),),
+                    child: Text("SignIn With Google",style: TextStyle(color: Colors.white,fontSize: 30,fontWeight: FontWeight.bold),),
                   ),
                   Form(
                       key: _formKey,

@@ -64,7 +64,7 @@ class _InitialPageState extends State<InitialPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text(
-                'Chat Demo',
+                'Private Chat',
                 style: TextStyle(
                   fontSize: 38,
                   letterSpacing: 3,

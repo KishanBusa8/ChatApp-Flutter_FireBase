@@ -37,12 +37,12 @@ class _ChatUserListState extends State<ChatUserList> with TickerProviderStateMix
   String name = '';
   AppLifecycleState _lastLifecycleState;
     final String serverToken = 'AAAAmvvAjYM:APA91bGxXqMtBGZ85MqgmLg7XNG95okpMxOdq9o__E49t4i3W834JvlSIPBeJjJ-e-rg1__84GHn8UAzfmrrZ8aWkvzUKcvZNvyikyOtgPV5SUcyin1OypGfRfiBnyP1N5sW0oz3W3RG';
-    final FirebaseMessaging firebaseMessaging = FirebaseMessaging();
+    final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
   @override
   void initState() {
     WidgetsBinding.instance.addObserver(this);
     getdata();
-    sendAndRetrieveMessage();
+    registerForPushHandler();
     // Timer.periodic(Duration(seconds: 1),  (s) {
     //   print("aaaaaaa $_lastLifecycleState.");
     // });
@@ -51,22 +51,28 @@ class _ChatUserListState extends State<ChatUserList> with TickerProviderStateMix
 
 
 
-    Future<Map<String, dynamic>> sendAndRetrieveMessage() async {
-      await firebaseMessaging.requestNotificationPermissions(
-        const IosNotificationSettings(sound: true, badge: true, alert: true, provisional: false),
-      );
-
-      final Completer<Map<String, dynamic>> completer =
-      Completer<Map<String, dynamic>>();
-
-      firebaseMessaging.configure(
+    registerForPushHandler() {
+      _firebaseMessaging.configure(
         onMessage: (Map<String, dynamic> message) async {
-          completer.complete(message);
-          print('message $message');
+          print("onMessage: $message");
+
+        },
+        onLaunch: (Map<String, dynamic> message) async {
+          print("onLaunch: $message");
+
+        },
+        onResume: (Map<String, dynamic> message) async {
+          print("onResume: $message");
+
         },
       );
-
-      return completer.future;
+      _firebaseMessaging.requestNotificationPermissions(
+          const IosNotificationSettings(
+              sound: true, badge: true, alert: true));
+      _firebaseMessaging.onIosSettingsRegistered
+          .listen((IosNotificationSettings settings) {
+        print("Settings registered: $settings");
+      });
     }
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
